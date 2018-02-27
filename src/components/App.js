@@ -26,10 +26,10 @@ class App extends Component {
 
     renderReminders() {
         const { reminders } = this.props;
-        return(
+        return (
             <ul className="list-group col-sm-4">
             {
-                reminders.map(reminder => {
+              reminders.map(reminder => {
                     return (
                       <li key={reminder.id} className="list-group-item">
                         <div className="list-item">
@@ -75,6 +75,12 @@ class App extends Component {
             </button>   
             </div>   
             {this.renderReminders() }
+            <div
+              className="btn btn-danger"
+              onClick={() => this.props.clearReminders()}
+              >
+              Clear Reminders
+              </div>
             </div>
         )
     }
@@ -87,4 +93,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(null, { addReminder, deleteReminder })(App);
+export default connect(mapStateToProps, { addReminder, deleteReminder })(App);
